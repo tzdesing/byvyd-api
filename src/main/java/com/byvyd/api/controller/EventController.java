@@ -5,12 +5,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api")
-public class HelloController {
+@RequestMapping("/event")
+public class EventController {
 
-    @GetMapping("/hello")
-    public String hello(){
+    @GetMapping("/")
+    public String findAll(){
         return "heeeello world";
+    }
 
+    @GetMapping("/event/{id}")
+    public String findById(){
+        return "heeeello world";
     }
 }
