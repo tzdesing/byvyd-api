@@ -1,28 +1,23 @@
-package com.byvyd.api.model;
+package com.byvyd.api.controller.dto;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 import java.time.LocalDateTime;
 
-public class Parking {
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class EventDTO {
 
     private String id;
     private String license;
     private String state;
     private String model;
     private String color;
+    @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
     private LocalDateTime entryDate;
+    @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
     private LocalDateTime exitDate;
     private Double bill;
-
-    public Parking(String id, String license, String state, String model, String color) {
-        this.id = id;
-        this.license = license;
-        this.state = state;
-        this.model = model;
-        this.color = color;
-    }
-
-    public Parking(){
-    }
 
     public String getId() {
         return id;

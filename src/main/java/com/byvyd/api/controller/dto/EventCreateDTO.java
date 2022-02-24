@@ -1,6 +1,6 @@
 package com.byvyd.api.controller.dto;
 
-public class ParkingCreateDTO {
+public class EventCreateDTO {
 
     private String license;
     private String state;
