@@ -1,67 +1,70 @@
 package com.byvyd.api.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.time.LocalDateTime;
+import java.util.Date;
 
 public class Event {
 
-    private String id;
-    private String license;
-    private String state;
-    private String model;
-    private String color;
+    private Integer id;
+    private String titulo;
+    private Integer status;
+    private Integer idOrganizador;
+    private Integer idHomenageado;
     private LocalDateTime entryDate;
-    private LocalDateTime exitDate;
-    private Double bill;
+    private Date dataNiver;
 
-    public Event(String id, String license, String state, String model, String color) {
+    public Event(Integer id, String titulo, Integer status, Integer idOrganizador, Integer idHomenageado, Date dataNiver) {
         this.id = id;
-        this.license = license;
-        this.state = state;
-        this.model = model;
-        this.color = color;
+        this.titulo = titulo;
+        this.status = status;
+        this.idOrganizador = idOrganizador;
+        this.idHomenageado = idHomenageado;
+        this.dataNiver = dataNiver;
     }
 
     public Event(){
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public String getLicense() {
-        return license;
+    public String getTitulo() {
+        return titulo;
     }
 
-    public void setLicense(String license) {
-        this.license = license;
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
 
-    public String getState() {
-        return state;
+    public Integer getStatus() {
+        return status;
     }
 
-    public void setState(String state) {
-        this.state = state;
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
-    public String getModel() {
-        return model;
+    public Integer getIdOrganizador() {
+        return idOrganizador;
     }
 
-    public void setModel(String model) {
-        this.model = model;
+    public void setIdOrganizador(Integer idOrganizador) {
+        this.idOrganizador = idOrganizador;
     }
 
-    public String getColor() {
-        return color;
+    public Integer getIdHomenageado() {
+        return idHomenageado;
     }
 
-    public void setColor(String color) {
-        this.color = color;
+    public void setIdHomenageado(Integer idHomenageado) {
+        this.idHomenageado = idHomenageado;
     }
 
     public LocalDateTime getEntryDate() {
@@ -72,19 +75,12 @@ public class Event {
         this.entryDate = entryDate;
     }
 
-    public LocalDateTime getExitDate() {
-        return exitDate;
+    public Date getDataNiver() {
+        return dataNiver;
     }
 
-    public void setExitDate(LocalDateTime exitDate) {
-        this.exitDate = exitDate;
+    public void setDataNiver(Date dataNiver) {
+        this.dataNiver = dataNiver;
     }
 
-    public Double getBill() {
-        return bill;
-    }
-
-    public void setBill(Double bill) {
-        this.bill = bill;
-    }
 }

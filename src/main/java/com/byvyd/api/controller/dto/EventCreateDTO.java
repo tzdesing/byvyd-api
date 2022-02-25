@@ -1,41 +1,28 @@
 package com.byvyd.api.controller.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import java.util.Date;
+
 public class EventCreateDTO {
 
-    private String license;
-    private String state;
-    private String model;
-    private String color;
+    private String titulo;
+    @JsonFormat(pattern = "dd/MM/yyyy")
+    private Date dataNiver;
 
-    public String getLicense() {
-        return license;
+    public String getTitulo() {
+        return titulo;
     }
 
-    public void setLicense(String license) {
-        this.license = license;
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
 
-    public String getState() {
-        return state;
+    public Date getDataNiver() {
+        return dataNiver;
     }
 
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    public String getModel() {
-        return model;
-    }
-
-    public void setModel(String model) {
-        this.model = model;
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
+    public void setDataNiver(Date dataNiver) {
+        this.dataNiver = dataNiver;
     }
 }

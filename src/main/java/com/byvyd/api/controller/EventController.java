@@ -37,7 +37,7 @@ public class EventController {
 
     @GetMapping("/findById/{id}")
     @ApiOperation("Find By Id")
-    public ResponseEntity<EventDTO> findById(@PathVariable String id){
+    public ResponseEntity<EventDTO> findById(@PathVariable Integer id){
         Event event = eventService.findById(id);
         EventDTO result = eventMapper.toEventDTO(event);
         return ResponseEntity.ok(result);
@@ -45,7 +45,7 @@ public class EventController {
 
     @DeleteMapping("/delete/{id}")
     @ApiOperation("Delete")
-    public ResponseEntity delete(@PathVariable String id){
+    public ResponseEntity delete(@PathVariable Integer id){
         eventService.delete(id);
         return ResponseEntity.noContent().build();
     }
@@ -61,7 +61,7 @@ public class EventController {
 
     @PutMapping("/update/{id}")
     @ApiOperation("Update")
-    public ResponseEntity<EventDTO> update(@PathVariable String id, @RequestBody EventCreateDTO dto){
+    public ResponseEntity<EventDTO> update(@PathVariable Integer id, @RequestBody EventCreateDTO dto){
         var eventCreate = eventMapper.toEventCreate(dto);
         var event = eventService.update(id, eventCreate);
         var result = eventMapper.toEventDTO(event);

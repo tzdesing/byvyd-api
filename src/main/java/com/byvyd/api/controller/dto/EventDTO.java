@@ -2,61 +2,62 @@ package com.byvyd.api.controller.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import io.swagger.models.properties.DateTimeProperty;
 
+import java.util.Date;
 import java.time.LocalDateTime;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class EventDTO {
 
-    private String id;
-    private String license;
-    private String state;
-    private String model;
-    private String color;
+    private Integer id;
+    private String titulo;
+    private Integer status;
+    private Integer idOrganizador;
+    private Integer idHomenageado;
     @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
     private LocalDateTime entryDate;
-    @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
-    private LocalDateTime exitDate;
-    private Double bill;
+    @JsonFormat(pattern = "dd/MM/yyyy")
+    private Date dataNiver;
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public String getLicense() {
-        return license;
+    public String getTitulo() {
+        return titulo;
     }
 
-    public void setLicense(String license) {
-        this.license = license;
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
 
-    public String getState() {
-        return state;
+    public Integer getStatus() {
+        return status;
     }
 
-    public void setState(String state) {
-        this.state = state;
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
-    public String getModel() {
-        return model;
+    public Integer getIdOrganizador() {
+        return idOrganizador;
     }
 
-    public void setModel(String model) {
-        this.model = model;
+    public void setIdOrganizador(Integer idOrganizador) {
+        this.idOrganizador = idOrganizador;
     }
 
-    public String getColor() {
-        return color;
+    public Integer getIdHomenageado() {
+        return idHomenageado;
     }
 
-    public void setColor(String color) {
-        this.color = color;
+    public void setIdHomenageado(Integer idHomenageado) {
+        this.idHomenageado = idHomenageado;
     }
 
     public LocalDateTime getEntryDate() {
@@ -67,19 +68,11 @@ public class EventDTO {
         this.entryDate = entryDate;
     }
 
-    public LocalDateTime getExitDate() {
-        return exitDate;
+    public Date getDataNiver() {
+        return dataNiver;
     }
 
-    public void setExitDate(LocalDateTime exitDate) {
-        this.exitDate = exitDate;
-    }
-
-    public Double getBill() {
-        return bill;
-    }
-
-    public void setBill(Double bill) {
-        this.bill = bill;
+    public void setDataNiver(Date dataNiver) {
+        this.dataNiver = dataNiver;
     }
 }
