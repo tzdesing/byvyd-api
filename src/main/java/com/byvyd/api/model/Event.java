@@ -7,16 +7,17 @@ import java.util.Date;
 
 public class Event {
 
-    private Integer id;
+    private Long idEvento;
     private String titulo;
     private Integer status;
-    private Integer idOrganizador;
-    private Integer idHomenageado;
+    private Long idOrganizador;
+    private Long idHomenageado;
+    @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
     private LocalDateTime entryDate;
     private Date dataNiver;
 
-    public Event(Integer id, String titulo, Integer status, Integer idOrganizador, Integer idHomenageado, Date dataNiver) {
-        this.id = id;
+    public Event(Long idEvento, String titulo, Integer status, Long idOrganizador, Long idHomenageado, Date dataNiver) {
+        this.idEvento = idEvento;
         this.titulo = titulo;
         this.status = status;
         this.idOrganizador = idOrganizador;
@@ -27,12 +28,12 @@ public class Event {
     public Event(){
     }
 
-    public Integer getId() {
-        return id;
+    public Long getIdEvento() {
+        return idEvento;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdEvento(Long idEvento) {
+        this.idEvento = idEvento;
     }
 
     public String getTitulo() {
@@ -51,19 +52,19 @@ public class Event {
         this.status = status;
     }
 
-    public Integer getIdOrganizador() {
+    public Long getIdOrganizador() {
         return idOrganizador;
     }
 
-    public void setIdOrganizador(Integer idOrganizador) {
+    public void setIdOrganizador(Long idOrganizador) {
         this.idOrganizador = idOrganizador;
     }
 
-    public Integer getIdHomenageado() {
+    public Long getIdHomenageado() {
         return idHomenageado;
     }
 
-    public void setIdHomenageado(Integer idHomenageado) {
+    public void setIdHomenageado(Long idHomenageado) {
         this.idHomenageado = idHomenageado;
     }
 

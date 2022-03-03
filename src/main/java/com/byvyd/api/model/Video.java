@@ -1,67 +1,58 @@
 package com.byvyd.api.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.time.LocalDateTime;
 
 public class Video {
 
-    private String id;
-    private String license;
-    private String state;
-    private String model;
-    private String color;
+    private Long idVideo;
+    private Boolean aprovado;
+    private Long idEvento;
+    private Long idSender;
+    @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
     private LocalDateTime entryDate;
-    private LocalDateTime exitDate;
-    private Double bill;
 
-    public Video(String id, String license, String state, String model, String color) {
-        this.id = id;
-        this.license = license;
-        this.state = state;
-        this.model = model;
-        this.color = color;
+    public Video(Long idVideo, Boolean aprovado, Long idEvento, Long idSender) {
+        this.idVideo = idVideo;
+        this.aprovado = aprovado;
+        this.idEvento = idEvento;
+        this.idSender = idSender;
     }
 
     public Video(){
     }
 
-    public String getId() {
-        return id;
+    public Long getIdVideo() {
+        return idVideo;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setIdVideo(Long idVideo) {
+        this.idVideo = idVideo;
     }
 
-    public String getLicense() {
-        return license;
+    public Boolean getAprovado() {
+        return aprovado;
     }
 
-    public void setLicense(String license) {
-        this.license = license;
+    public void setAprovado(Boolean aprovado) {
+        this.aprovado = aprovado;
     }
 
-    public String getState() {
-        return state;
+    public Long getIdEvento() {
+        return idEvento;
     }
 
-    public void setState(String state) {
-        this.state = state;
+    public void setIdEvento(Long idEvento) {
+        this.idEvento = idEvento;
     }
 
-    public String getModel() {
-        return model;
+    public Long getIdSender() {
+        return idSender;
     }
 
-    public void setModel(String model) {
-        this.model = model;
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
+    public void setIdSender(Long idSender) {
+        this.idSender = idSender;
     }
 
     public LocalDateTime getEntryDate() {
@@ -70,21 +61,5 @@ public class Video {
 
     public void setEntryDate(LocalDateTime entryDate) {
         this.entryDate = entryDate;
-    }
-
-    public LocalDateTime getExitDate() {
-        return exitDate;
-    }
-
-    public void setExitDate(LocalDateTime exitDate) {
-        this.exitDate = exitDate;
-    }
-
-    public Double getBill() {
-        return bill;
-    }
-
-    public void setBill(Double bill) {
-        this.bill = bill;
     }
 }

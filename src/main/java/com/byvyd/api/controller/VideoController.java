@@ -35,35 +35,35 @@ public class VideoController {
         return ResponseEntity.ok(result);
     }
 
-    @GetMapping("/findById/{id}")
+    @GetMapping("/findById/{idVideo}")
     @ApiOperation("Find By Id")
-    public ResponseEntity<VideoDTO> findById(@PathVariable String id){
-        Video video = videoService.findById(id);
+    public ResponseEntity<VideoDTO> findById(@PathVariable String idVideo){
+        Video video = videoService.findById(idVideo);
         VideoDTO result = videoMapper.toVideoDTO(video);
         return ResponseEntity.ok(result);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/delete/{idVideo}")
     @ApiOperation("Delete")
-    public ResponseEntity delete(@PathVariable String id){
-        videoService.delete(id);
+    public ResponseEntity delete(@PathVariable String idVideo){
+        videoService.delete(idVideo);
         return ResponseEntity.noContent().build();
     }
 
     @PostMapping("/create")
     @ApiOperation("Create")
-    public ResponseEntity<VideoDTO> create(@RequestBody VideoCreateDTO dto){
-        var videoCreate = videoMapper.toVideoCreate(dto);
+    public ResponseEntity<VideoDTO> create(@RequestBody VideoDTO dto){
+        var videoCreate = videoMapper.toVideo(dto);
         var video = videoService.create(videoCreate);
         var result = videoMapper.toVideoDTO(video);
         return ResponseEntity.status(HttpStatus.CREATED).body(result);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/update/{idVideo}")
     @ApiOperation("Update")
-    public ResponseEntity<VideoDTO> update(@PathVariable String id, @RequestBody VideoCreateDTO dto){
-        var videoCreate = videoMapper.toVideoCreate(dto);
-        var video = videoService.update(id, videoCreate);
+    public ResponseEntity<VideoDTO> update(@PathVariable String idVideo, @RequestBody VideoDTO dto){
+        var videoCreate = videoMapper.toVideo(dto);
+        var video = videoService.update(idVideo, videoCreate);
         var result = videoMapper.toVideoDTO(video);
         return ResponseEntity.status(HttpStatus.OK).body(result);
     }

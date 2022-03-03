@@ -1,6 +1,7 @@
 package com.byvyd.api.service;
 
 import com.byvyd.api.exception.VideoNotFoundException;
+import com.byvyd.api.model.Event;
 import com.byvyd.api.model.Video;
 import org.springframework.stereotype.Service;
 
@@ -13,49 +14,65 @@ public class VideoService {
 
     private static Map<String, Video> videoMap = new HashMap();
 
+    private static Date dateExemplo(){
+        Calendar c = Calendar.getInstance();
+        c.set(2022, 01 , 23);
+        Date dataAux = c.getTime();
+        return(dataAux);
+    }
+
     static {
-        var id= getUUID();
-        var id1= getUUID();
-        Video video = new Video(id, "DMS-1111", "SC", "CELTA", "PRETO");
-        Video video1 = new Video(id1, "WAS-1234", "SP", "VW GOL", "VERMELHO");
-        videoMap.put(id, video);
-        videoMap.put(id1, video1);
+        Random geradorId = new Random();
+        var id= geradorId.nextInt(1000000);
+        var id1= geradorId.nextInt(1000000);
+        var idE= geradorId.nextInt(1000000);
+        var idE1= geradorId.nextInt(1000000);
+        var idS= geradorId.nextInt(1000000);
+        var idS1= geradorId.nextInt(1000000);
+
+        Video video = new Video((long)id, true, (long)idE, (long)idS);
+        Video video1 = new Video((long)id1, false, (long)idE1, (long)idS1);
+        videoMap.put(String.valueOf(id), video);
+        videoMap.put(String.valueOf(id1), video1);
     }
 
     public List<Video>findAll(){
         return videoMap.values().stream().collect(Collectors.toList());
     }
 
-    private static String getUUID() {
+    /*private static String getUUID() {
         return UUID.randomUUID().toString().replace("-","");
-    }
+    }*/
 
-    public Video findById(String id) {
-        Video video = videoMap.get(id);
+    public Video findById(String idVideo) {
+        Video video = videoMap.get(idVideo);
         if (video == null){
-            throw new VideoNotFoundException(id);
+            throw new VideoNotFoundException(idVideo);
         }
-        return videoMap.get(id);
+        return videoMap.get(idVideo);
     }
 
     public Video create(Video videoCreate) {
-        String uuid = getUUID();
-        videoCreate.setId(uuid);
+        Random geradorId = new Random();
+        var randomId = geradorId.nextInt(1000000);
+        videoCreate.setIdVideo((long) randomId);
+        videoCreate.setAprovado(false);
         videoCreate.setEntryDate(LocalDateTime.now());
-        videoMap.put(uuid, videoCreate);
-
+        videoMap.put(String.valueOf(randomId), videoCreate);
         return videoCreate;
     }
 
-    public void delete(String id) {
-        findById(id);
-        videoMap.remove(id);
+    public void delete(String idVideo) {
+        findById(idVideo);
+        videoMap.remove(idVideo);
     }
 
-    public Video update(String id, Video videoCreate) {
-        Video Video = findById(id);
-        Video.setColor(videoCreate.getColor());
-        videoMap.replace(id, Video);
+    public Video update(String idVideo, Video videoCreate) {
+        Video Video = findById(idVideo);
+        Video.setAprovado(videoCreate.getAprovado());
+        Video.setIdSender(videoCreate.getIdSender());
+        Video.setIdEvento(videoCreate.getIdEvento());
+        videoMap.replace(idVideo, Video);
         return Video;
     }
 }

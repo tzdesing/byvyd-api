@@ -3,29 +3,49 @@ package com.byvyd.api.controller.dto;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import io.swagger.models.properties.DateTimeProperty;
+import jdk.jfr.Event;
+import org.modelmapper.PropertyMap;
+import org.springframework.context.annotation.Bean;
 
 import java.util.Date;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class EventDTO {
 
-    private Integer id;
+    private Long idEvento;
     private String titulo;
     private Integer status;
-    private Integer idOrganizador;
-    private Integer idHomenageado;
+    private Long idOrganizador;
+    private Long idHomenageado;
     @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
     private LocalDateTime entryDate;
     @JsonFormat(pattern = "dd/MM/yyyy")
     private Date dataNiver;
 
-    public Integer getId() {
-        return id;
+    public Long getIdEvento() {
+        return idEvento;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdEvento(Long idEvento) {
+        this.idEvento = idEvento;
+    }
+
+    public Long getIdOrganizador() {
+        return idOrganizador;
+    }
+
+    public void setIdOrganizador(Long idOrganizador) {
+        this.idOrganizador = idOrganizador;
+    }
+
+    public Long getIdHomenageado() {
+        return idHomenageado;
+    }
+
+    public void setIdHomenageado(Long idHomenageado) {
+        this.idHomenageado = idHomenageado;
     }
 
     public String getTitulo() {
@@ -44,22 +64,6 @@ public class EventDTO {
         this.status = status;
     }
 
-    public Integer getIdOrganizador() {
-        return idOrganizador;
-    }
-
-    public void setIdOrganizador(Integer idOrganizador) {
-        this.idOrganizador = idOrganizador;
-    }
-
-    public Integer getIdHomenageado() {
-        return idHomenageado;
-    }
-
-    public void setIdHomenageado(Integer idHomenageado) {
-        this.idHomenageado = idHomenageado;
-    }
-
     public LocalDateTime getEntryDate() {
         return entryDate;
     }
@@ -75,4 +79,22 @@ public class EventDTO {
     public void setDataNiver(Date dataNiver) {
         this.dataNiver = dataNiver;
     }
+
+    /*@Bean
+    public ModelMapper modelMapper(){
+        ModelMapper mm = new ModelMapper();
+
+        PropertyMap<EventCreateDTO, Event> propertyMap = new PropertyMap<EventCreateDTO, Event> (){
+            protected void configure() {
+                map(source.getIdOrganizador()).setIdOrganizador(null);
+            }
+        }
+
+        mm.addMappings(propertyMap);
+        return mm;
+    }*/
+
 }
+/*
+    EventCreateDTO eventCreateDTO = modelMapper.map(EventDTO, EventCreateDTO.class);
+    ModelMapper modelMapper = new ModelMapper();*/
