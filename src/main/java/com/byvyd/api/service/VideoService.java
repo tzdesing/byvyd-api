@@ -14,14 +14,7 @@ public class VideoService {
 
     private static Map<String, Video> videoMap = new HashMap();
 
-    private static Date dateExemplo(){
-        Calendar c = Calendar.getInstance();
-        c.set(2022, 01 , 23);
-        Date dataAux = c.getTime();
-        return(dataAux);
-    }
-
-    static {
+    /*static {
         Random geradorId = new Random();
         var id= geradorId.nextInt(1000000);
         var id1= geradorId.nextInt(1000000);
@@ -34,7 +27,7 @@ public class VideoService {
         Video video1 = new Video((long)id1, false, (long)idE1, (long)idS1);
         videoMap.put(String.valueOf(id), video);
         videoMap.put(String.valueOf(id1), video1);
-    }
+    }*/
 
     public List<Video>findAll(){
         return videoMap.values().stream().collect(Collectors.toList());
@@ -53,12 +46,11 @@ public class VideoService {
     }
 
     public Video create(Video videoCreate) {
-        Random geradorId = new Random();
-        var randomId = geradorId.nextInt(1000000);
-        videoCreate.setIdVideo((long) randomId);
+        /*Random geradorId = new Random();
+        var randomId = geradorId.nextInt(1000000);*/
+        videoCreate.setIdVideo(videoCreate.getIdVideo());
         videoCreate.setAprovado(false);
-        videoCreate.setEntryDate(LocalDateTime.now());
-        videoMap.put(String.valueOf(randomId), videoCreate);
+        videoMap.put(String.valueOf(videoCreate.getIdVideo()), videoCreate);
         return videoCreate;
     }
 

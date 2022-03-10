@@ -12,8 +12,7 @@ public class VideoDTO {
     private Boolean aprovado;
     private Long idEvento;
     private Long idSender;
-    @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
-    private LocalDateTime entryDate;
+
 
     public String getIdVideo() {
         return idVideo;
@@ -45,13 +44,5 @@ public class VideoDTO {
 
     public void setIdSender(Long idSender) {
         this.idSender = idSender;
-    }
-
-    public LocalDateTime getEntryDate() {
-        return entryDate;
-    }
-
-    public void setEntryDate(LocalDateTime entryDate) {
-        this.entryDate = entryDate;
     }
 }

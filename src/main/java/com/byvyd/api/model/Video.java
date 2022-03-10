@@ -2,16 +2,18 @@ package com.byvyd.api.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.time.LocalDateTime;
 
+@Entity
 public class Video {
 
+    @Id
     private Long idVideo;
     private Boolean aprovado;
     private Long idEvento;
     private Long idSender;
-    @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
-    private LocalDateTime entryDate;
 
     public Video(Long idVideo, Boolean aprovado, Long idEvento, Long idSender) {
         this.idVideo = idVideo;
@@ -55,11 +57,4 @@ public class Video {
         this.idSender = idSender;
     }
 
-    public LocalDateTime getEntryDate() {
-        return entryDate;
-    }
-
-    public void setEntryDate(LocalDateTime entryDate) {
-        this.entryDate = entryDate;
-    }
 }

@@ -16,6 +16,7 @@ public class EventService {
 
     private static Map<String, Event> eventMap = new HashMap();
 
+/*
     private static Date dateExemplo(){
         Calendar c = Calendar.getInstance();
         c.set(2022, 01 , 23);
@@ -36,7 +37,7 @@ public class EventService {
         Event event1 = new Event((long)id1, "Niver Monica", 1, (long)idO1, (long)idH1, dateExemplo());
         eventMap.put(String.valueOf(id), event);
         eventMap.put(String.valueOf(id1), event1);
-    }
+    }*/
 
     public List<Event>findAll(){
         return eventMap.values().stream().collect(Collectors.toList());
@@ -55,12 +56,12 @@ public class EventService {
     }
 
     public Event create(Event eventCreate) {
-        Random geradorId = new Random();
-        var randomId = geradorId.nextInt(1000000);
-        eventCreate.setIdEvento((long) randomId);
+        /*Random geradorId = new Random();
+        var randomId = geradorId.nextInt(1000000);*/
+        eventCreate.setIdEvento(eventCreate.getIdEvento());
         eventCreate.setStatus(1);
         eventCreate.setEntryDate(LocalDateTime.now());
-        eventMap.put(String.valueOf(randomId), eventCreate);
+        eventMap.put(String.valueOf(eventCreate.getIdEvento()), eventCreate);
         return eventCreate;
     }
 

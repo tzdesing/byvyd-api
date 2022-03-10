@@ -1,12 +1,19 @@
 package com.byvyd.api.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.dom4j.tree.QNameCache;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.time.LocalDateTime;
 import java.util.Date;
 
+@Entity(name = "Evento")
 public class Event {
 
+    @Id
+    @Column(nullable = false)
     private Long idEvento;
     private String titulo;
     private Integer status;

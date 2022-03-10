@@ -2,40 +2,31 @@ package com.byvyd.api.controller.dto;
 
 public class VideoCreateDTO {
 
-    private String license;
-    private String state;
-    private String model;
-    private String color;
+    private Boolean aprovado;
+    private Long idEvento;
+    private Long idSender;
 
-    public String getLicense() {
-        return license;
+    public Boolean getAprovado() {
+        return aprovado;
     }
 
-    public void setLicense(String license) {
-        this.license = license;
+    public void setAprovado(Boolean aprovado) {
+        this.aprovado = aprovado;
     }
 
-    public String getState() {
-        return state;
+    public Long getIdEvento() {
+        return idEvento;
     }
 
-    public void setState(String state) {
-        this.state = state;
+    public void setIdEvento(Long idEvento) {
+        this.idEvento = idEvento;
     }
 
-    public String getModel() {
-        return model;
+    public Long getIdSender() {
+        return idSender;
     }
 
-    public void setModel(String model) {
-        this.model = model;
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
+    public void setIdSender(Long idSender) {
+        this.idSender = idSender;
     }
 }
