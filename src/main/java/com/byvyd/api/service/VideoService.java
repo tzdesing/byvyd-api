@@ -1,18 +1,22 @@
 package com.byvyd.api.service;
 
 import com.byvyd.api.exception.VideoNotFoundException;
-import com.byvyd.api.model.Event;
 import com.byvyd.api.model.Video;
+import com.byvyd.api.repository.VideoRepository;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
 public class VideoService {
 
-    private static Map<String, Video> videoMap = new HashMap();
+    //private static Map<String, Video> videoMap = new HashMap();
+    private final VideoRepository videoRepository;
+
+    public VideoService(VideoRepository videoRepository) {
+        this.videoRepository = videoRepository;
+    }
 
     /*static {
         Random geradorId = new Random();
@@ -30,7 +34,8 @@ public class VideoService {
     }*/
 
     public List<Video>findAll(){
-        return videoMap.values().stream().collect(Collectors.toList());
+        return videoRepository.findAll();
+        //return videoMap.values().stream().collect(Collectors.toList());
     }
 
     /*private static String getUUID() {
@@ -38,25 +43,29 @@ public class VideoService {
     }*/
 
     public Video findById(String idVideo) {
-        Video video = videoMap.get(idVideo);
+        return videoRepository.findById(Long.valueOf(idVideo)).orElseThrow(()->
+                new VideoNotFoundException(idVideo));
+        /*Video video = videoMap.get(idVideo);
         if (video == null){
             throw new VideoNotFoundException(idVideo);
         }
-        return videoMap.get(idVideo);
+        return videoMap.get(idVideo);*/
     }
 
     public Video create(Video videoCreate) {
         /*Random geradorId = new Random();
         var randomId = geradorId.nextInt(1000000);*/
-        videoCreate.setIdVideo(videoCreate.getIdVideo());
+        //videoCreate.setIdVideo(videoCreate.getIdVideo());
         videoCreate.setAprovado(false);
-        videoMap.put(String.valueOf(videoCreate.getIdVideo()), videoCreate);
+        videoRepository.save(videoCreate);
+        //videoMap.put(String.valueOf(videoCreate.getIdVideo()), videoCreate);
         return videoCreate;
     }
 
     public void delete(String idVideo) {
         findById(idVideo);
-        videoMap.remove(idVideo);
+        videoRepository.deleteById(Long.valueOf(idVideo));
+        //videoMap.remove(idVideo);
     }
 
     public Video update(String idVideo, Video videoCreate) {
@@ -64,7 +73,8 @@ public class VideoService {
         Video.setAprovado(videoCreate.getAprovado());
         Video.setIdSender(videoCreate.getIdSender());
         Video.setIdEvento(videoCreate.getIdEvento());
-        videoMap.replace(idVideo, Video);
+        videoRepository.save(Video);
+        //videoMap.replace(idVideo, Video);
         return Video;
     }
 }

@@ -3,16 +3,16 @@ package com.byvyd.api.model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.dom4j.tree.QNameCache;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Calendar;
 import java.util.Date;
 
 @Entity(name = "Evento")
 public class Event {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
     private Long idEvento;
     private String titulo;
@@ -90,5 +90,4 @@ public class Event {
     public void setDataNiver(Date dataNiver) {
         this.dataNiver = dataNiver;
     }
-
 }
