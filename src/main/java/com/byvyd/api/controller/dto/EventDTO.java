@@ -2,14 +2,9 @@ package com.byvyd.api.controller.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import io.swagger.models.properties.DateTimeProperty;
-import jdk.jfr.Event;
-import org.modelmapper.PropertyMap;
-import org.springframework.context.annotation.Bean;
 
 import java.util.Date;
 import java.time.LocalDateTime;
-import java.util.Objects;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class EventDTO {
@@ -80,21 +75,4 @@ public class EventDTO {
         this.dataNiver = dataNiver;
     }
 
-    /*@Bean
-    public ModelMapper modelMapper(){
-        ModelMapper mm = new ModelMapper();
-
-        PropertyMap<EventCreateDTO, Event> propertyMap = new PropertyMap<EventCreateDTO, Event> (){
-            protected void configure() {
-                map(source.getIdOrganizador()).setIdOrganizador(null);
-            }
-        }
-
-        mm.addMappings(propertyMap);
-        return mm;
-    }*/
-
 }
-/*
-    EventCreateDTO eventCreateDTO = modelMapper.map(EventDTO, EventCreateDTO.class);
-    ModelMapper modelMapper = new ModelMapper();*/

@@ -1,11 +1,9 @@
 package com.byvyd.api.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import org.dom4j.tree.QNameCache;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Calendar;
 import java.util.Date;
 
 @Entity(name = "Evento")

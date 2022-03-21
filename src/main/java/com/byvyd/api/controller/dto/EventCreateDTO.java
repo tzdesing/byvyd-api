@@ -2,12 +2,6 @@ package com.byvyd.api.controller.dto;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.util.Date;
-import com.byvyd.api.controller.dto.EventDTO;
-import jdk.jfr.Event;
-import org.springframework.context.annotation.Bean;
-
-import javax.swing.border.EmptyBorder;
-import java.util.Objects;
 
 public class EventCreateDTO {
 

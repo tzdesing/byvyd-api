@@ -28,15 +28,4 @@ public class EventMapper {
     public Event toEventCreate(EventCreateDTO dto) {
         return MODEL_MAPPER.map(dto, Event.class);
     }
-
-    //modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
-
-
 }
-
-/* ModelMapper.getConfiguration()
-         .setFieldMatchingEnabled(true)
-         .setFieldAccessLevel(AccessLevel.PRIVATE);
-
-modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);*/
-

@@ -1,11 +1,8 @@
 package com.byvyd.api.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
-@Entity
+@Entity(name = "Video")
 public class Video {
 
     @Id
