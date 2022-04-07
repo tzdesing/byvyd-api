@@ -5,19 +5,27 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import javax.persistence.*;
 import java.util.Date;
 
-@Entity(name = "Usuario")
+@Entity
+@Table(name = "Usuario")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
     private Long idUser;
+    @Column
     private String nome;
+    @Column
     private String sobrenome;
+    @Column
     private String apelido;
+    @Column
     private String email;
+    @Column
     private String senha;
     @JsonFormat(pattern = "dd/MM/yyyy")
+    @Column
     private Date dataNascimento;
+    @Column
     private String sexo;
 
     public User(Long idUser, String nome, String sobrenome, String apelido, String email, String senha, Date dataNascimento, String sexo) {

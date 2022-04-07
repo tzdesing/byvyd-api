@@ -9,3 +9,5 @@ docker stop emociona-db
 ## Start database
 docker start emociona-db
 
+## Remove database
+docker rm -f emociona-db

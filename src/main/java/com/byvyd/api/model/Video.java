@@ -2,15 +2,19 @@ package com.byvyd.api.model;
 
 import javax.persistence.*;
 
-@Entity(name = "Video")
+@Entity
+@Table(name = "Video")
 public class Video {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
     private Long idVideo;
+    @Column
     private Boolean aprovado;
+    @Column
     private Long idEvento;
+    @Column
     private Long idSender;
 
     public Video(Long idVideo, Boolean aprovado, Long idEvento, Long idSender) {

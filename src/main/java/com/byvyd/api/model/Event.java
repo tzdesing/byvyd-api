@@ -6,19 +6,26 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Date;
 
-@Entity(name = "Evento")
+@Entity
+@Table(name = "Evento")
 public class Event {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
     private Long idEvento;
+    @Column
     private String titulo;
+    @Column
     private Integer status;
+    @Column
     private Long idOrganizador;
+    @Column
     private Long idHomenageado;
+    @Column
     @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
     private LocalDateTime entryDate;
+    @Column
     private Date dataNiver;
 
     public Event(Long idEvento, String titulo, Integer status, Long idOrganizador, Long idHomenageado, Date dataNiver) {
